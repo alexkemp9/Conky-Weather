@@ -11,3 +11,20 @@ The rest of this README will introduce the elements of adding, setting-up & usin
 
 ### Install Conky
 This is easy under Linux:
+
+```bash
+$ apt search conky
+Sorting... Done
+Full Text Search... Done
+conky/stable 1.18.3-1 all
+  highly configurable system monitor (transitional package)
+
+conky-all/stable,now 1.18.3-1 amd64 [installed]
+  highly configurable system monitor (all features enabled)
+
+conky-cli/stable 1.18.3-1 amd64
+  highly configurable system monitor (basic version)
+
+conky-std/stable 1.18.3-1 amd64
+  highly configurable system monitor (default version)
+```
