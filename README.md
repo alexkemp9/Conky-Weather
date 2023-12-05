@@ -34,3 +34,11 @@ Therefore, a `$ sudo apt install conky-all` will be sufficient to install Conky 
 My Desktop Manager is XFCE (version 4.18) and it provides a login-autostart facilty at `menu:Settings | Session and Startup | Application Autostart`. I've provided a shell-script at `.conky/conkystart.sh` which will launch both *Conkys*. Note that the `.desktop` file is also provided here for your convenience at `.config/autostart/Conky.desktop`. You will need to edit `conkystart.sh` to replace my username with your own within the script and, I am afraid, that will turn out to be needed within almost every script. Sorry about that.
 
 It is useful to have a *Startup* menu command for *Conky* plus a *Restart* command in case it gets stuck (these are just scripts after all, and will sometimes glitch). Those are called `.conky/conkystart.sh` + `.conky/conkyrestart.sh` and are activated here in `.local/share/applications` (which is also the place in your system to get them into `menu:Accessories`) by `Conky_start.desktop` & `Conky_restart.desktop`.
+
+### *Using Conky*
+The whole of making use of *Conky* boils down to the LUA commands that are placed within the `conkyrc` scripts. This is not the place for a *how-to lua*, nor that matter for a *how-to conky*, but it *is* the place for a *How-To Acquire Weather Stats*, and that is what we shall deal with next.
+
+#### *Getting the Weather from Your Local Airport*
+Every Airport hosts a *Weather Station* so that they can inform aeroplanes close to them on the state of the weather; that is particularly important for planes coming in to land, and those about to take off. The USA [National Oceanic and Atmospheric Administration](https://www.noaa.gov/weather) (NOAA) is responsible for broadcasting that info, and does so for most Airports worldwide as METARs (METeorological Aerodrome Reports) ([wiki](https://en.wikipedia.org/wiki/METAR)). At the heart of acquiring the METAR is a 4-digit code for the Airport (find yours [here](http://weather.rap.ucar.edu/surface/stations.txt)). Also look at `.conky/weather.pl` (which is the PERL script that is used to decode the METAR).
+
+#### *Don’t DDOS the NOAA*
