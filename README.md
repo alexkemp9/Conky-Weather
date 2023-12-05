@@ -9,3 +9,5 @@ Above is a screenshot from my desktop. Apart from the [Blue Marble](https://en.w
 
 The rest of this README will introduce the elements of adding, setting-up & using Conky and, in particular, how to use Conky & NOT upset the [NOAA](https://www.noaa.gov/weather) [wiki](https://en.wikipedia.org/wiki/National_Oceanic_and_Atmospheric_Administration) so that they remove everyone’s access to Conky once again.
 
+### Install Conky
+This is easy under Linux:
