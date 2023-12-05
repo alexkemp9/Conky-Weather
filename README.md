@@ -41,7 +41,7 @@ The whole of making use of *Conky* boils down to the LUA commands that are place
 #### *Getting the Weather from Your Local Airport*
 Every Airport hosts a *Weather Station* so that they can inform aeroplanes close to them on the state of the weather; that is particularly important for planes coming in to land, and those about to take off. The USA [National Oceanic and Atmospheric Administration](https://www.noaa.gov/weather) (NOAA) is responsible for broadcasting that info, and does so for most Airports worldwide as METARs (METeorological Aerodrome Reports) ([wiki](https://en.wikipedia.org/wiki/METAR)). At the heart of acquiring the METAR is a 4-char code for the Airport (find yours [here](http://weather.rap.ucar.edu/surface/stations.txt) or look at `.conky/metar-stations.txt` (10,270 lines)). The one that I use is *EGNX == East Midlands*. Also look at `.conky/weather.pl` (which is the PERL script that is used to decode the METAR).
 
-Having decided on the Airport that you will use to collect the METAR from, and having discovered it’s 4-char CODE, you will need to change every *‘EGNX’* ro *your* Airport’s code within `.conky/conkyrc`
+Having decided on the Airport that you will use to collect the METAR from, and having discovered it’s 4-char CODE, you will need to change every *‘EGNX’* into *your* Airport’s code within `.conky/conkyrc`
 
 #### *Don’t DDOS the NOAA*
 Acquiring weather stats via METARs became popular 10 or 15 years ago and the number of people doing it began to swell enormously. Unfortunately, the commonsense to do so courteously did not spread at the same rate, and the addition of thousands of people constantly collecting METARs every second or so acted as a [DDOS](https://en.wikipedia.org/wiki/Denial-of-service_attack) upon the NOAA and they removed access to the link that was formerly used to  collect the METAR. My first notice of this was in 2016 August. The latest change was 2023 October, and these changes have been yearly in between.
@@ -54,3 +54,6 @@ my $CACHE = "~/.conky/.metar_cache";
 my $CACHE_UI = 1200;
 ```
 The Cache is saved as a Hash. Access is to the cache first until Timeout, when the cache is replaced after a fresh site access.
+
+### *File List*
+There follows a complete list of files supplied with this Repository. First note the following:     
