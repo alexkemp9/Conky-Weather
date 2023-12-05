@@ -1,0 +1,75 @@
+conky.config = {
+-- .conky/conkyrc.weather
+-- draw barometer
+
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+
+	override_utf8_locale = true,
+
+	double_buffer = true,
+	no_buffers = true,
+
+	text_buffer_size = 2048,
+--imlib_cache_size 0
+
+	temperature_unit = 'fahrenheit',
+
+-- Window specifications #
+
+	own_window = true,
+-- If own_window is yes, you may use type normal, desktop or override
+-- 2015-12-10 commented-out settings below are ordinarily fine
+--            current SLiM+xfce4 4.8 require desktop + own_window_argb_visual + _value
+--            xfce require compositing ON ((menu):Settings→Windows Manager Tweaks)
+--            else not transparent or SLiM background shows under 
+-- own_window_type normal
+	own_window_type = 'normal',
+-- own_window_transparent yes
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	border_inner_margin = 6,
+	border_outer_margin = 3,
+
+	minimum_width = 250, minimum_height = 250,--# width, height
+	maximum_width = 250,
+
+--## top_left, top_right, top_middle, bottom_left, bottom_right, bottom_middle
+--## middle_left, middle_middle, middle_right, or none
+	alignment = 'bottom_left',
+	gap_x = 0,
+	gap_y = 30,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	font = 'ubuntu:size=8',
+	xftalpha = 0.5,
+
+	uppercase = false,
+
+	temperature_unit = 'celsius',
+
+
+	default_color = '#FFFFFF',
+
+-- Lua Load  #
+	lua_load = '~/.lua/scripts/weather.lua',
+	lua_draw_hook_pre = 'conky_draw_test',
+};
+
+conky.text = [[
+# No TEXT in weather config  #
+
+]];

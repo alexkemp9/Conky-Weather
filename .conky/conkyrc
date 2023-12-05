@@ -1,0 +1,143 @@
+conky.config = {
+-- ~/.conky/conkyrc
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+
+	cpu_avg_samples = 4,
+	net_avg_samples = 2,
+
+	override_utf8_locale = true,
+
+	double_buffer = true,
+	no_buffers = true,
+
+	text_buffer_size = 2048,
+--imlib_cache_size 0
+
+	temperature_unit = 'fahrenheit',
+
+-- Window specifications #
+
+	own_window = true,
+-- If own_window is yes, you may use type normal, desktop or override
+-- 2015-12-10 commented-out settings below are ordinarily fine
+--            current SLiM+xfce4 4.8 require desktop + own_window_argb_visual + _value
+--            xfce require compositing ON ((menu):Settings→Windows Manager Tweaks)
+--            else not transparent or SLiM background shows under 
+-- own_window_type normal
+	own_window_type = 'desktop',
+-- own_window_transparent yes
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_hints = 'below',
+
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+	minimum_width = 200, minimum_height = 250,--# width, height
+	maximum_width = 200,
+
+--## top_left, top_right, top_middle, bottom_left, bottom_right, bottom_middle
+--## middle_left, middle_middle, middle_right, or none
+	alignment = 'top_right',
+	gap_x = 20,
+	gap_y = 20,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	font = 'ubuntu:size=8',
+	xftalpha = 0.5,
+
+	uppercase = false,
+
+	temperature_unit = 'celsius',
+
+
+	default_color = '#FFFFFF',
+
+-- Lua Load  #
+-- Note: clock + gauges are hard-coded graphics in clock_rings.lua
+--       whilst text is within this file (thus possible disjunction)
+
+--       cpu cpu1    : x=50, y=300,  radius=25
+--       cpu cpu2    : x=50, y=300,  radius=20
+--       memperc     : x=75, y=350,  radius=25
+--       swapperc    : x=100, y=400, radius=25
+--       fs_used_perc: x=125, y=450, radius=25
+--       downspeedf  : x=150, y=500, radius=25
+--       upspeedf    : x=150, y=500, radius=20
+	lua_load = '~/.lua/scripts/clock_rings.lua',
+	lua_draw_hook_pre = 'clock_rings',
+
+};
+
+conky.text = [[
+${voffset 8}${color 9f440d}${font ubuntu:size=16}${time %A}${font}${voffset -8}${alignr}${color FFFFFF}${font ubuntu:size=38}${time %e}${font}
+${color FFFFFF}${voffset -30}${color FFFFFF}${font ubuntu:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font ubuntu:size=20}${time %Y}${font}${color 9f440d}${hr}
+# ${voffset 140}${font ubuntu:size=10}${alignr}HOME${font}
+${voffset 150}${font ubuntu:size=10}${alignr}East Midlands Airport:${font}
+# local weather in minutes
+# EGNX = East Midlands
+# EGXW = Waddington
+#    see http://www.aviationweather.gov/metar?zoom=8&lat=53.24716&lon=-1.11957&layers=B00FTTFFTFFTT&plottype=model&scale=1&density=all&metric=true&decoded=false&taf=true
+# or see http://weather.noaa.gov/weather/GB_cc.html
+${font ubuntu:size=12}${color FFFFFF}
+# 2016-08-03 http://weather.noaa.gov/pub/data/observations/metar/stations/ withdrawn; now gives 404
+# 2018-05-13 http://tgftp.nws.noaa.gov/data/observations/metar/stations/ works
+# 2021-09-28 http://tgftp.nws.noaa.gov/data/observations/metar/stations/ fails after update to chimaera
+# 2023-10-16 https://www.aviationweather.gov/metar/ fails after site update
+${alignr}${execi 300 /home/alexk/.conky/weather.pl EGNX TEMP_C } °C${font}${font ubuntu:size=8}
+${alignr}${execi 300 /home/alexk/.conky/weather.pl EGNX TIME }:
+# 2021-09-28 original gave mysterious continuous 'ARRAY' result with SKY, now ok ???
+${alignr}Sky: ${execi 300 /home/alexk/.conky/weather.pl EGNX SKY }
+${alignr}RH: ${execi 300 /home/alexk/.conky/weather.pl EGNX RH }%
+${alignr}Vis: ${execi 300 /home/alexk/.conky/weather.pl EGNX VISIBILITY }
+${alignr}${execi 300 /home/alexk/.conky/weather.pl EGNX ALT_HP } mBar
+${alignr}Wind: ${execi 300 /home/alexk/.conky/weather.pl EGNX WIND_KTS } knots
+${alignr}${execi 300 /home/alexk/.conky/weather.pl EGNX WIND_DIR_ENG }
+${alignr}${execi 300 /home/alexk/.conky/weather.pl EGNX WIND_DIR_DEG } °
+#
+# 2021-09-28 below replaced by above due to 'TODO..' response:
+# ${alignr}${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ EGNX temperature 30} °C${font}${font ubuntu:size=8}
+# ${alignr}${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ EGNX cloud_cover 30}
+# ${alignr}RH: ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ EGNX humidity 30}%
+# ${alignr}${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ EGNX pressure 30} mBar
+# ${alignr}Direction: ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ EGNX wind_dir 30}
+# ${alignr}${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ EGNX weather 30}${font}
+#
+# ${image ~/.conky/avlinux.png -p 58,115 -s 85x48}
+#
+# ${color FFFFFF}${goto 25}${voffset 35}${cpu cpu0}%
+${color FFFFFF}${goto 25}${voffset -58}${cpu cpu0}%
+${color 9f440d}${goto 25}CPU
+${color FFFFFF}${goto 50}${voffset 23}${memperc}%
+${color 9f440d}${goto 50}RAM
+${color FFFFFF}${goto 75}${voffset 23}${swapperc}%
+${color 9f440d}${goto 75}Swap
+${color FFFFFF}${goto 100}${voffset 23}${fs_used_perc /}%
+${color 9f440d}${goto 100}Disk
+${color FFFFFF}${goto 125}${voffset 25}${downspeed eth0}
+${color FFFFFF}${goto 125}${upspeed eth0}
+${color 9f440d}${goto 125}Net
+
+
+${color FFFFFF}${font ubuntu:size=8}Uptime: ${uptime_short}
+${color FFFFFF}${font ubuntu:size=8}Processes: ${processes}
+${color FFFFFF}${font ubuntu:size=8}Running: ${running_processes}
+
+
+
+
+${color 9f440d}${font ubuntu:size=8}${nodename}
+# ${pre_exec} has been removed in v1.10.6 conky used in devuan ascii
+${execi 65000 lsb_release -ds} $machine
+Kernel: ${kernel}
+]];

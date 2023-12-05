@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=Conky
+Comment=Startup Conky System Stats
+Exec=/home/alexk/.conky/conkystart.sh &
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Categories=GTK;Utility;
+Hidden=false
+
