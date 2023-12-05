@@ -28,6 +28,7 @@ conky-cli/stable 1.18.3-1 amd64
 conky-std/stable 1.18.3-1 amd64
   highly configurable system monitor (default version)
 ```
+Therefore, a `sudo apt install conky-all` will be sufficient to install Conky in your system.
 
 ### *Setup Conky*
 My Desktop Manager is XFCE (version 4.18) and it provides a login-autostart facilty at `menu:Settings | Session and Startup | Application Autostart`. I've provided a shell-script at `.conky/conkystart.sh` which will launch both *Conkys*. Note that the `.desktop` file is also provided here for your convenience at `.config/autostart/Conky.desktop`. You will need to edit `conkystart.sh` to replace my username with your own within the script and, I am afraid, that will turn out to be needed within almost every script. Sorry about that.
