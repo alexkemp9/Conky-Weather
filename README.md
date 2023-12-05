@@ -57,3 +57,45 @@ The Cache is saved as a Hash. Access is to the cache first until Timeout, when t
 
 ### *File List*
 There follows a complete list of files supplied with this Repository. First note the following:     
+- .conky/conkyrc.weather is a hard-link to .conky/conkyrc-11.weather
+- .conky/weather.pl is a hard-link to .conky/weather-13.pl
+- .lua/scripts/weather.lua is a hard-link to .lua/scripts/weather-11.lua
+
+```
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+2023-12-05 02:25:37 D....            0            0  .config
+2023-12-05 08:43:02 D....            0            0  .config/autostart
+2023-12-05 08:40:54 D....            0            0  .conky
+2023-12-05 02:25:37 D....            0            0  .local
+2023-12-05 02:25:37 D....            0            0  .local/share
+2023-12-05 08:45:19 D....            0            0  .local/share/applications
+2023-12-05 02:25:37 D....            0            0  .lua
+2023-12-05 08:47:36 D....            0            0  .lua/scripts
+2015-12-26 00:00:00 ....A       794624      1525985  20151226_Conky--successful-autostart-setup.html
+2023-12-05 02:25:37 ....A        35149               LICENSE
+2023-12-05 02:25:37 ....A           65               README.md
+2023-12-05 02:25:37 ....A       913885               Screenshot_2023-12-05_02-03-04.png
+2017-07-22 00:21:40 ....A          216       190183  .config/autostart/Conky.desktop
+2023-10-17 10:51:55 ....A         5710               .conky/conkyrc
+2020-11-23 14:36:18 ....A         1728               .conky/conkyrc-11.weather
+2020-11-23 14:36:18 ....A         1728               .conky/conkyrc.weather
+2020-11-23 14:03:30 ....A           36               .conky/conkyrestart.sh
+2016-09-19 23:34:21 ....A          367               .conky/conkystart.sh
+2019-10-15 11:00:25 ....A         5303               .conky/convert.lua
+2023-02-07 13:08:29 ....A       825676               .conky/metar-stations.txt
+2017-07-22 10:06:20 ....A         3099               .conky/weather-10.pl
+2018-05-10 19:10:32 ....A         7978               .conky/weather-11.pl
+2020-11-19 16:39:25 ....A        10995               .conky/weather-12.pl
+2023-10-17 13:23:49 ....A        11372               .conky/weather-13.pl
+2023-10-17 13:23:49 ....A        11372               .conky/weather.pl
+2016-09-15 06:50:12 ....A         1833               .conky/weather.sh
+2016-05-20 15:59:37 ....A          235               .local/share/applications/Conky_restart.desktop
+2016-05-20 16:50:45 ....A          238               .local/share/applications/Conky_start.desktop
+2015-12-27 01:14:11 ....A         9395               .lua/scripts/clock_rings.lua
+2020-10-06 21:04:49 ....A        38881               .lua/scripts/weather-10.lua
+2020-11-23 13:55:11 ....A        40996               .lua/scripts/weather-11.lua
+2020-11-23 13:55:11 ....A        40996               .lua/scripts/weather.lua
+------------------- ----- ------------ ------------  ------------------------
+2023-12-05 08:47:36            2761877      1716168  24 files, 8 folders
+```
